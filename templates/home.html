@@ -1,0 +1,53 @@
+{% extends 'base.html' %}
+
+{% block title %}TaskFlow - Home{% endblock %}
+
+{% block content %}
+<div class="row align-items-center">
+    <div class="col-lg-6">
+        <h1 class="display-4 fw-bold">Manage your tasks with TaskFlow</h1>
+        <p class="lead">A collaborative task management system designed to help teams work efficiently.</p>
+        
+        {% if user.is_authenticated %}
+        <div class="d-grid gap-2 d-md-flex">
+            <a href="#" class="btn btn-primary btn-lg px-4 me-md-2">View Projects</a>
+        </div>
+        {% else %}
+        <div class="d-grid gap-2 d-md-flex">
+            <a href="{% url 'accounts:register' %}" class="btn btn-primary btn-lg px-4 me-md-2">Get Started</a>
+            <a href="{% url 'accounts:login' %}" class="btn btn-outline-secondary btn-lg px-4">Login</a>
+        </div>
+        {% endif %}
+    </div>
+    <div class="col-lg-6">
+        <img src="https://via.placeholder.com/600x400" alt="TaskFlow" class="img-fluid rounded shadow-lg">
+    </div>
+</div>
+
+<div class="row mt-5 pt-5">
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title">Create Projects</h3>
+                <p class="card-text">Organize your work into projects and invite team members to collaborate.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title">Manage Tasks</h3>
+                <p class="card-text">Break down projects into manageable tasks with priorities and deadlines.</p>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+        <div class="card h-100 shadow-sm">
+            <div class="card-body">
+                <h3 class="card-title">Track Progress</h3>
+                <p class="card-text">Monitor task status and project completion with intuitive visual tools.</p>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

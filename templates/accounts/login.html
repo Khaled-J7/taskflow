@@ -1,0 +1,38 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}TaskFlow - Login{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-md-6">
+        <div class="card shadow-lg border-0 rounded-lg mt-5">
+            <div class="card-header bg-primary text-white">
+                <h3 class="text-center font-weight-light my-2">Login</h3>
+            </div>
+            <div class="card-body">
+                <form method="post">
+                    {% csrf_token %}
+                    {{ form|crispy }}
+                    <div class="form-check mb-3">
+                        <input class="form-check-input" type="checkbox" name="remember_me" id="remember_me">
+                        <label class="form-check-label" for="remember_me">Remember Me</label>
+                    </div>
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                    </div>
+                </form>
+                <div class="mt-3">
+                    <a href="#" class="text-decoration-none">Forgot your password?</a>
+                </div>
+            </div>
+            <div class="card-footer text-center py-3">
+                <div class="small">
+                    <span>Need an account?</span>
+                    <a href="{% url 'accounts:register' %}" class="text-decoration-none">Sign up!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -15,14 +15,28 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 
+from os import name
 from django.contrib import admin
 from django.urls import path, include
 from django.conf import settings
 from django.conf.urls.static import static
+from accounts.views import home, register
+
+
+""" 
+The project-level urls.py file serves as the entry point for all URL routing in your Django project. It's like the main reception desk of a large office building that directs visitors to the right department.
+When Django receives a request, it first looks at this main urls.py file to determine which app should handle the request. This file has several important responsibilities:
+
+1. Central routing: It directs requests to the appropriate app based on URL patterns.
+2. Project-wide URLs: It defines URLs that aren't specific to any particular app, like the home page or admin site.
+3. URL namespacing: It organizes URLs into logical groups by assigning namespaces to included app URLs.
+4. Media/static file serving: In development, it configures serving of media and static files.
+"""
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    # We'll add more URL patterns here later
+    path('', home, name='home'),
+    path('accounts/', include('accounts.urls', namespace='accounts')),
 ]
 
 # Add this conditional for serving media files during development
