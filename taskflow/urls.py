@@ -37,6 +37,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', home, name='home'),
     path('accounts/', include('accounts.urls', namespace='accounts')),
+    path('projects/', include('projects.urls', namespace='projects')),
 ]
 
 # Add this conditional for serving media files during development

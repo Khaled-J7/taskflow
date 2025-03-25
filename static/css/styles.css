@@ -1,0 +1,28 @@
+/* static/css/styles.css */
+.navbar-brand img {
+    height: 40px;
+    margin-right: 5px;
+}
+
+.logo-text {
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+/* Add some custom styling for the TaskFlow application */
+.task-priority-high {
+    color: #dc3545;
+}
+
+.task-priority-medium {
+    color: #fd7e14;
+}
+
+.task-priority-low {
+    color: #28a745;
+}
+
+.task-status-badge {
+    font-size: 0.8rem;
+    padding: 0.4em 0.6em;
+}

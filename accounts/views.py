@@ -51,6 +51,7 @@ def register(request):
 def login_view(request):
     """Handle user login."""
     # 📍 If user is already logged in, redirect them
+    """ `request.user` refers to the user who is currently making the request to your web application."""
     if request.user.is_authenticated:
         return redirect('home')
 

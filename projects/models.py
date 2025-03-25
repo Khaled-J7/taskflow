@@ -4,6 +4,13 @@ from django.contrib.auth.models import User
 # Create your models here.
 
 class Project(models.Model):
+    """
+    - title
+    - description
+    - created_date
+    - status `(active, archived)`
+    - members --> `ManyToMany` relationship with `User` Model
+    """
     
     # A short name for the project (limited to 100 characters)
     title = models.CharField(max_length=100)
@@ -40,7 +47,12 @@ class Project(models.Model):
     
     
 class ProjectMember(models.Model):
-    """ The ProjectMember model serves as the junction table between User and Project """
+    """ The ProjectMember model serves as the junction table between User and Project
+    - user --> ForeignKey relationship with `User` Model
+    - project --> ForeignKey relationship with `Project` Model
+    - role (admin, manager, member)
+    - joined_date
+    """
     
     # Each ProjectMember is linked to exactly one User
     user = models.ForeignKey(User, on_delete=models.CASCADE)
