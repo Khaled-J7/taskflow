@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+
+{% block title %}Remove Member - {{ project.title }} - TaskFlow{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="mb-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'projects:project_list' %}">Projects</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'projects:project_detail' project.pk %}">{{ project.title }}</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'projects:manage_members' project.pk %}">Manage Members</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Remove Member</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h2 class="mb-0 text-danger">Remove Member</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <h4 class="alert-heading">Warning!</h4>
+                        <p>You are about to remove <strong>{{ member.user.username }}</strong> from the project <strong>"{{ project.title }}"</strong>.</p>
+                        <p>They will lose all access to this project and its tasks.</p>
+                    </div>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{% url 'projects:manage_members' project.pk %}" class="btn btn-outline-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-danger">Yes, Remove Member</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

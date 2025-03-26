@@ -1,0 +1,43 @@
+{% extends 'base.html' %}
+{% load crispy_forms_tags %}
+
+{% block title %}Update Member Role - {{ project.title }} - TaskFlow{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="mb-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'projects:project_list' %}">Projects</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'projects:project_detail' project.pk %}">{{ project.title }}</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'projects:manage_members' project.pk %}">Manage Members</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Update Role</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h2 class="mb-0">Update Member Role</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-info">
+                        <p>You are updating the role for <strong>{{ member.user.username }}</strong> in project <strong>{{ project.title }}</strong>.</p>
+                    </div>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        {{ form|crispy }}
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{% url 'projects:manage_members' project.pk %}" class="btn btn-outline-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-primary">Update Role</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

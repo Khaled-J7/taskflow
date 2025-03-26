@@ -29,7 +29,7 @@ class ProjectMemberForm(forms.ModelForm):
         The __init__ method in ProjectMemberForm is overridden to customize the user dropdown. If a project is provided, it filters out users who are already members of that project, preventing duplicates.
         """
         project = kwargs.pop('project', None)
-        super.__init__(*args, **kwargs)
+        super().__init__(*args, **kwargs)
         
         if project:
             # Get all users who are already members of this project

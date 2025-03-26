@@ -19,10 +19,7 @@
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
       <div class="container">
         <a class="navbar-brand d-flex align-items-center" href="/">
-          <img
-            src="{% static 'images/Task_Flow.jpeg' %}"
-            alt="TaskFlow Logo"
-          />
+          <img src="{% static 'images/Task_Flow.jpeg' %}" alt="TaskFlow Logo" />
           <span class="logo-text ms-2">TaskFlow</span>
         </a>
         <button
@@ -37,14 +34,16 @@
           <ul class="navbar-nav me-auto">
             {% if user.is_authenticated %}
             <li class="nav-item">
-              <a class="nav-link" href="{% url 'projects:project_list' %}">Projects</a>
+              <a class="nav-link" href="{% url 'projects:project_list' %}"
+                >Projects</a
+              >
             </li>
             {% endif %}
           </ul>
           <ul class="navbar-nav ms-auto">
             {% if user.is_authenticated %}
             <li class="nav-item dropdown">
-              
+              <a
                 class="nav-link dropdown-toggle"
                 href="#"
                 id="navbarDropdown"
