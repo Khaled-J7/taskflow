@@ -20,6 +20,18 @@ class Task(models.Model):
     """
     - Central model representing a work item within a project.
     - Tasks can be assigned to users, categorized with tags, and have comments and attachments.
+    - ***********************
+    - title
+    - description
+    - project  --> ForeignKey with Project Model
+    - assigned_to --> ForeignKey with User Model
+    - status
+    - priority
+    - due_date
+    - updated_date
+    - created_date
+    - created_by --> ForeignKey with User Model
+    - tags --> ManyToMany with Tag Model
     """
     # Basic task information
     title = models.CharField(max_length=100)

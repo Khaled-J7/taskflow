@@ -1,0 +1,44 @@
+<!-- templates/tasks/task_confirm_delete.html -->
+{% extends 'base.html' %}
+
+{% block title %}Delete Task - {{ task.title }} - TaskFlow{% endblock %}
+
+{% block content %}
+<div class="container">
+    <div class="mb-4">
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="{% url 'projects:project_list' %}">Projects</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'projects:project_detail' project.pk %}">{{ project.title }}</a></li>
+                <li class="breadcrumb-item"><a href="{% url 'tasks:task_detail' task.id %}">{{ task.title }}</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Delete</li>
+            </ol>
+        </nav>
+    </div>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card shadow-sm">
+                <div class="card-header bg-white">
+                    <h2 class="mb-0 text-danger">Delete Task</h2>
+                </div>
+                <div class="card-body">
+                    <div class="alert alert-warning">
+                        <h4 class="alert-heading">Warning!</h4>
+                        <p>You are about to delete the task <strong>"{{ task.title }}"</strong>. This action cannot be undone.</p>
+                        <p>All comments and attachments associated with this task will also be deleted.</p>
+                    </div>
+                    
+                    <form method="post">
+                        {% csrf_token %}
+                        <div class="d-flex justify-content-between mt-4">
+                            <a href="{% url 'tasks:task_detail' task.id %}" class="btn btn-outline-secondary">Cancel</a>
+                            <button type="submit" class="btn btn-danger">Yes, Delete Task</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
